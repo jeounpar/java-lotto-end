@@ -9,14 +9,6 @@ import org.junit.jupiter.api.Test;
 
 class LottoCollectionTest {
 
-    static class AlwaysReturn_1_2_3_4_5_6 extends RandomGenerator {
-
-        @Override
-        public List<Integer> generate() {
-            return Arrays.asList(1, 2, 3, 4, 5, 6);
-        }
-    }
-
     @Test
     @DisplayName("로또 1등 당첨")
     void FIRST() {
@@ -51,6 +43,14 @@ class LottoCollectionTest {
 
         assertThat(lottoRanks).hasSize(1)
             .contains(LottoRank.THIRD);
+    }
+
+    static class AlwaysReturn_1_2_3_4_5_6 extends RandomGenerator {
+
+        @Override
+        public List<Integer> generate() {
+            return Arrays.asList(1, 2, 3, 4, 5, 6);
+        }
     }
 
 

@@ -12,6 +12,7 @@ class LottoRankTest {
     void rank() {
         List<Integer> lottoNumbers = Arrays.asList(1, 2, 3, 4, 5, 6);
         List<Integer> winningNumbers = Arrays.asList(1, 2, 3, 4, 5, 7);
-        assertThat(LottoRank.rankByMatchCountAndBonusNumber(new LottoNumbers(lottoNumbers), new WinningNumbers(winningNumbers, 6))).isEqualTo(LottoRank.SECOND);
+        assertThat(LottoRank.rankByMatchCountAndBonusNumber(new LottoNumbers(lottoNumbers),
+            new WinningNumbers(winningNumbers, 6))).isEqualTo(LottoRank.SECOND);
     }
 }

@@ -21,14 +21,6 @@ public enum LottoRank {
         this.money = money;
     }
 
-    public int money() {
-        return this.money;
-    }
-
-    public long matchCount() {
-        return this.matchCount;
-    }
-
     private static LottoRank valueOf(long matchCount, boolean matchBonusNumber) {
         if (matchBonusNumber) {
             return matchRank(
@@ -49,6 +41,14 @@ public enum LottoRank {
             .filter(predicate)
             .findAny()
             .orElse(LottoRank.MISS);
+    }
+
+    public int money() {
+        return this.money;
+    }
+
+    public long matchCount() {
+        return this.matchCount;
     }
 
 }
