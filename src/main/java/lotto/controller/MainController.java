@@ -1,8 +1,6 @@
 package lotto.controller;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 import lotto.model.LottoNumbers;
 import lotto.model.LottoService;
 import lotto.model.RandomGenerator;
@@ -19,10 +17,9 @@ public class MainController {
         int totalMoney = Integer.parseInt(input.money());
         int countByPurchaseManually = Integer.parseInt(input.countByPurchaseManually());
 
-        List<LottoNumbers> manuallyLottoNumbers = input.purchaseManually(countByPurchaseManually)
-            .stream()
-            .map(parser::parseTextToLottoNumbers)
-            .collect(Collectors.toList());
+        List<LottoNumbers> manuallyLottoNumbers = parser.parseTextToLottoNumbersList(
+            input.purchaseManually(countByPurchaseManually)
+        );
 
         LottoService lottoService = new LottoService(
             totalMoney, new RandomGenerator(), manuallyLottoNumbers
@@ -30,9 +27,6 @@ public class MainController {
         outputView.printLotto(lottoService.getLottoNumberList(), countByPurchaseManually);
 
         List<Integer> winningNumbers = parser.parseTextToIntegetList(input.winningNumbers());
-        Arrays.stream(input.winningNumbers().split(", "))
-            .map(Integer::parseInt)
-            .collect(Collectors.toList());
         int bonusNumber = Integer.parseInt(input.bonusNumber());
         lottoService.drawLotto(winningNumbers, bonusNumber);
 

@@ -7,6 +7,12 @@ import lotto.model.LottoNumbers;
 
 public class Parser {
 
+    public List<LottoNumbers> parseTextToLottoNumbersList(List<String> texts) {
+        return texts.stream()
+            .map(this::parseTextToLottoNumbers)
+            .collect(Collectors.toList());
+    }
+
     public LottoNumbers parseTextToLottoNumbers(String text) {
         return new LottoNumbers(
             Arrays.stream(text.split(", "))
